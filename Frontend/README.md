@@ -1,16 +1,40 @@
-# React + Vite
+# 🚀 Interview-AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Smart, AI-powered interview prep that turns your resume or self-description and a target job description into a tailored interview plan and resume PDF.
 
-Currently, two official plugins are available:
+## ✨ Quick Summary
+- 🔐 Auth: JWT cookie-based sign in/out
+- 📄 Upload: Resume (PDF/DOCX) or paste a self-description
+- 🤖 AI output: Match score, technical & behavioral Qs, skill gaps, and a day-by-day preparation plan
+- 🖨️ Export: Tailored resume PDF generated via AI + Puppeteer
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚙️ Quick Start
+Backend
+```
+cd Backend
+npm install
+npm run dev
+```
+Frontend
+```
+cd Frontend
+npm install
+npm run dev
+```
 
-## React Compiler
+## 🔑 Env (Backend/.env)
+- `MONGODB_URI`
+- `GOOGLE_GENAI_API_KEY` (optional)
+- `JWT_SECRET`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📡 API (summary)
+- `POST /api/auth/register` — register
+- `POST /api/auth/login` — login
+- `POST /api/interview` — generate report (multipart: `resume`, `jobDescription`, `selfDescription`)
+- `POST /api/interview/resume/pdf/:interviewReportId` — generate resume PDF
 
-## Expanding the ESLint configuration
+## ⚠️ Notes
+- Keep secrets out of source control. Use `.env` and secure storage for API keys.
+- Uploaded resumes are parsed and stored as text; consider privacy and retention policies.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
